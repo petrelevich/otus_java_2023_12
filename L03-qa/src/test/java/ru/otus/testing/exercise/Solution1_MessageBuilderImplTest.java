@@ -21,6 +21,6 @@ class Solution1_MessageBuilderImplTest {
     @Test
     void buildMessageTest() {
         System.out.println("buildMessageTest");
-        //throw new RuntimeException("Ooops in buildMessageTest");
+        // throw new RuntimeException("Ooops in buildMessageTest");
     }
 }
