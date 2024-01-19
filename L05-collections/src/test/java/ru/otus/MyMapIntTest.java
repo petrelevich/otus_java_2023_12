@@ -49,6 +49,7 @@ class MyMapIntTest {
     void calcHash() {
         var mapSize = 200_000;
         var keyStr = "k";
+        var maxVal = 0;
 
         var hashSetAll = new HashSet<>();
         var hashSetNeg = new HashSet<>();
@@ -60,12 +61,15 @@ class MyMapIntTest {
             if (hash < 0) {
                 hashSetNeg.add(hash);
             }
-            hashSetAbs.add(Math.abs(key.hashCode()));
+            var absVal = Math.abs(key.hashCode());
+            hashSetAbs.add(absVal);
+            maxVal = Math.max(absVal, maxVal);
         }
         logger.info(
-                "hashSetAll:{}, hashSetNeg:{}, hashSetAbs::{}",
+                "hashSetAll:{}, hashSetNeg:{}, hashSetAbs:{}, maxVal:{}",
                 hashSetAll.size(),
                 hashSetNeg.size(),
-                hashSetAbs.size());
+                hashSetAbs.size(),
+                maxVal);
     }
 }
