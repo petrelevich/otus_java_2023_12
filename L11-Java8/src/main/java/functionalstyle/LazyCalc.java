@@ -1,62 +1,61 @@
 package functionalstyle;
 
-import java.util.Date;
-import java.util.function.Function;
-
 import static java.lang.Thread.sleep;
 
+import java.util.Date;
+import java.util.function.IntUnaryOperator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class LazyCalc {
+    private static final Logger logger = LoggerFactory.getLogger(LazyCalc.class);
 
-
-    public static void main(String[] args){
+    public static void main(String[] args) {
         var calc = new LazyCalc();
-        var variable = true;
+
         var startTime = new Date().getTime();
-        System.out.println("== FIRST VARIANT == ");
-        calc.calculation(true, calc.veryHeavyFunc( 60 ));
+        logger.info("== FIRST VARIANT == ");
+        calc.calculation(true, calc.veryHeavyFunc(60));
         var endTime = new Date().getTime();
-        System.out.println("== FIRST, true time : " + (endTime - startTime));
+        logger.info("== FIRST, true time : {}", (endTime - startTime));
         startTime = endTime;
-        calc.calculation(false, calc.veryHeavyFunc( 60 ));
+        calc.calculation(false, calc.veryHeavyFunc(60));
         endTime = new Date().getTime();
-        System.out.println("== FIRST, true time : " + (endTime - startTime));
+        logger.info("== FIRST, true time : {}", (endTime - startTime));
         startTime = endTime;
 
-
-        System.out.println("== SECOND VARIANT == ");
-        calc.calculation( true, 60, calc::veryHeavyFunc );
+        logger.info("== SECOND VARIANT == ");
+        calc.calculation(true, 60, calc::veryHeavyFunc);
         endTime = new Date().getTime();
-        System.out.println("==  true time : " + (endTime - startTime));
+        logger.info("==  true time : {}", (endTime - startTime));
         startTime = endTime;
-        calc.calculation( false, 60, calc::veryHeavyFunc );
+        calc.calculation(false, 61, calc::veryHeavyFunc);
         endTime = new Date().getTime();
-        System.out.println("== true time : " + (endTime - startTime));
-
+        logger.info("== true time : {}", (endTime - startTime));
     }
 
-    private void calculation( boolean variable, int value, Function<Integer, Integer> veryHeavyFunc ) {
-        if (variable){
-            // do smth
+    private void calculation(boolean variable, int value, IntUnaryOperator veryHeavyFunc) {
+        if (variable) {
+            logger.info("some actions");
         } else {
-            System.out.println(veryHeavyFunc.apply( value ));
+            logger.info("{}:", veryHeavyFunc.applyAsInt(value));
         }
     }
 
-    private void calculation( boolean variable, Integer veryHeavyFunc ) {
-        if (variable){
-            // do smth
+    private void calculation(boolean variable, Integer veryHeavyFunc) {
+        if (variable) {
+            logger.info("some actions");
         } else {
-            System.out.println(veryHeavyFunc);
+            logger.info("{}:", veryHeavyFunc);
         }
     }
 
-
-    private Integer veryHeavyFunc(Integer input){
+    private Integer veryHeavyFunc(Integer input) {
         try {
             sleep(1000L);
-        } catch ( InterruptedException e ) {
-            e.printStackTrace();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
-        return input*2;
+        return input * 2;
     }
 }

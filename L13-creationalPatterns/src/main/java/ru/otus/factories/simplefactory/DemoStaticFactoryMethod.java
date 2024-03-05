@@ -1,8 +1,13 @@
 package ru.otus.factories.simplefactory;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
+@SuppressWarnings({"rawtypes", "unchecked", "java:S1481", "java:S1854", "java:S1068"})
 public class DemoStaticFactoryMethod {
     public static void main(String[] args) {
         // Простая фабрика (simple factory) или статический фабричный метод (static factory method)
@@ -14,7 +19,6 @@ public class DemoStaticFactoryMethod {
         var opt1 = Optional.empty();
         var otp2 = Optional.of("Some String");
         var opt3 = Optional.ofNullable(null);
-
 
         Collection<?> originalCollection = null;
         List<Integer> originalList = null;
@@ -33,6 +37,7 @@ public class DemoStaticFactoryMethod {
     }
 }
 
+@SuppressWarnings({"java:S1068"})
 class Employee {
 
     private final String name;

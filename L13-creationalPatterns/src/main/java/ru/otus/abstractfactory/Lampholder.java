@@ -7,5 +7,5 @@ package ru.otus.abstractfactory;
  * created on 18.09.18.
  */
 public interface Lampholder {
-  void hold();
+    void hold();
 }

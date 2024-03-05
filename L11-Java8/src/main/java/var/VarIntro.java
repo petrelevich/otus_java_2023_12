@@ -18,8 +18,8 @@ public class VarIntro {
     public String test(int val) throws IOException {
         var example = "ValueStr"; // String
         example = "newString";
-        // example = 5; //нельзя изменить тип
-//         var error = null; //ошибка, тип неопределен
+        // example = 5; нельзя изменить тип
+        // var error = null; ошибка, тип неопределен
 
         try (InputStream is = new FileInputStream("lines.txt")) {
             System.out.println(is);
@@ -36,7 +36,7 @@ public class VarIntro {
             System.out.println(str);
         }
 
-//         var nameList = new ArrayList<>(); //тоже не понятен тип
+        // var nameList = new ArrayList<>(); тоже не понятен тип
         var stringList = new ArrayList<String>(); // а тут уже все ясно
 
         // Посмотрите на var в debug

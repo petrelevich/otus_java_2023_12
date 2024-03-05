@@ -4,8 +4,8 @@ import ru.otus.factories.simplefactory.Configuration;
 import ru.otus.factories.simplefactory.ConfigurationDB;
 
 class ConfigurationFactoryDB extends ConfigurationFactory {
-  @Override
-  Configuration buildConfiguration() {
-    return new ConfigurationDB();
-  }
+    @Override
+    Configuration buildConfiguration() {
+        return new ConfigurationDB();
+    }
 }

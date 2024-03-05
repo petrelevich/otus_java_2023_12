@@ -1,9 +1,8 @@
 package ru.otus.l12.encapsulation.demo2;
 
-import ru.otus.l12.encapsulation.demo1.Department;
-
 import java.util.ArrayList;
 import java.util.List;
+import ru.otus.l12.encapsulation.demo1.Department;
 
 // Сужаем интерфейс
 public class CompanyIterableDepartments {

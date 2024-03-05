@@ -1,31 +1,68 @@
 package ru.otus.singleton;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@SuppressWarnings({"java:S1192"})
 public class LazySingleton {
+    private static final Logger logger = LoggerFactory.getLogger(LazySingleton.class);
     private static LazySingleton instance = null;
+
     private LazySingleton() {
-        System.out.println("run constructor");
+        logger.info("run constructor");
     }
 
     public static LazySingleton getInstance() {
         if (instance == null) {
-            System.out.println("lazy init");
+            // плохо, может быть гонка и мы можем получить два синглтона
+            logger.info("lazy init");
             instance = new LazySingleton();
+        }
+
+        return instance;
+    }
+
+    @SuppressWarnings({"java:S1192", "java:S4144", "java:S2168"})
+    public static synchronized LazySingleton getInstance2() {
+        // ок, но медленно
+        if (instance == null) {
+            logger.info("lazy init");
+            instance = new LazySingleton();
+        }
+
+        return instance;
+    }
+
+    @SuppressWarnings("java:S2168")
+    public static LazySingleton getInstance3() {
+        // сложно и не работает - см
+        // https://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html
+        if (instance == null) {
+            synchronized (LazySingleton.class) {
+                if (instance == null) {
+                    logger.info("lazy init");
+                    instance = new LazySingleton();
+                }
+            }
         }
 
         return instance;
     }
 }
 
+@SuppressWarnings({"java:S3457"})
 class LazySingletonDemo {
+    private static final Logger logger = LoggerFactory.getLogger(LazySingletonDemo.class);
+
     public static void main(String[] args) {
-        System.out.println("--- begin ---");
+        logger.info("--- begin ---");
 
         LazySingleton singleton1 = LazySingleton.getInstance();
         LazySingleton singleton2 = LazySingleton.getInstance();
 
-        System.out.println(singleton1);
-        System.out.println(singleton2);
-        System.out.printf("singleton1 == singleton2 => %b\n", singleton1 == singleton2);
-        System.out.println("---end ---");
+        logger.info("{}", singleton1);
+        logger.info("{}", singleton2);
+        logger.info("singleton1 == singleton2 => {}\n", singleton1 == singleton2);
+        logger.info("---end ---");
     }
 }

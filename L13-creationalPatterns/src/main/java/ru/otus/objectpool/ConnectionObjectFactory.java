@@ -1,13 +1,17 @@
 package ru.otus.objectpool;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
- * @author sergey
- * created on 19.09.18.
+ * @author sergey created on 19.09.18.
  */
 class ConnectionObjectFactory implements ObjectFactory<Connection> {
-  @Override
-  public Connection create() {
-    System.out.println("Create new Connection");
-    return new ConnectionPostgres();
-  }
+    private static final Logger logger = LoggerFactory.getLogger(ConnectionObjectFactory.class);
+
+    @Override
+    public Connection create() {
+        logger.info("Create new Connection");
+        return new ConnectionPostgres();
+    }
 }

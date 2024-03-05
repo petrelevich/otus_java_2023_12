@@ -1,10 +1,9 @@
 package ru.otus.l12.solid;
 
-
 /**
- * @author sergey
- * created on 09.09.19.
+ * @author sergey created on 09.09.19.
  */
+@SuppressWarnings("java:S112")
 public class InterfaceSegregation {
 
     /*
@@ -26,12 +25,12 @@ public class InterfaceSegregation {
 
         @Override
         public void pedal() {
-            //что-то делается
+            // что-то делается
         }
 
         @Override
         public void keepBalance() {
-            //что-то делается
+            // что-то делается
         }
 
         @Override

@@ -7,8 +7,7 @@ public class BetterDepartment {
     private final Company company; // Что еще можно добавить, улучшить?
 
     BetterDepartment(Company company) {
-        if (company == null)
-            throw new IllegalArgumentException("company cannot be null");
+        if (company == null) throw new IllegalArgumentException("company cannot be null");
 
         this.company = company;
     }

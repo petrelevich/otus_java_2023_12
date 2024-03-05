@@ -1,8 +1,11 @@
 package ru.otus.l12.encapsulation.demo2;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.otus.l12.encapsulation.demo1.Department;
 
 public class EncapsusationDemo2 {
+    private static final Logger logger = LoggerFactory.getLogger(EncapsusationDemo2.class);
 
     public static void main(String[] args) {
         var company1 = new CompanyUnmodifiableDepartments();
@@ -11,7 +14,7 @@ public class EncapsusationDemo2 {
         try {
             departments1.add(new Department());
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error("error", ex);
         }
 
         var company2 = new CompanyIterableDepartments();
@@ -20,8 +23,7 @@ public class EncapsusationDemo2 {
         var departments2 = company2.getDepartments();
 
         for (Department department : departments2) {
-            System.out.println(department);
+            logger.info("{}", department);
         }
     }
-
 }

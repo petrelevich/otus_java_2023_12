@@ -1,20 +1,20 @@
 package ru.otus.builder;
 
-import java.util.Calendar;
-import java.util.Locale;
-
 import static java.util.Calendar.MONDAY;
 
-/**
- * Примеры builder в JDK.
- */
+import java.util.Calendar;
+import java.util.Locale;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/** Примеры builder в JDK. */
+@SuppressWarnings({"java:S1854", "java:S1481"})
 public class DemoJdk {
+    private static final Logger logger = LoggerFactory.getLogger(DemoJdk.class);
+
     public static void main(String[] args) {
         // Locale
-        Locale locale = new Locale.Builder()
-                .setLanguage("ru")
-                .setRegion("RU")
-                .build();
+        Locale locale = new Locale.Builder().setLanguage("ru").setRegion("RU").build();
 
         // Calendar
         Calendar cal = new Calendar.Builder()
@@ -31,16 +31,13 @@ public class DemoJdk {
 
         String str = builder.toString();
 
-        System.out.println(str);
+        logger.info("{}", str);
 
         // fluent
-        StringBuilder builder2 = new StringBuilder()
-                .append("aa ")
-                .append("bb ")
-                .append("cc");
+        StringBuilder builder2 = new StringBuilder().append("aa ").append("bb ").append("cc");
 
         String str2 = builder2.toString();
 
-        System.out.println(str2);
+        logger.info("{}", str2);
     }
 }

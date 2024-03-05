@@ -5,8 +5,7 @@ import ru.otus.abstractfactory.Bulb;
 import ru.otus.abstractfactory.Lampholder;
 
 /**
- * @author sergey
- * created on 17.09.18.
+ * @author sergey created on 17.09.18.
  */
 public class Demo {
 
@@ -26,5 +25,4 @@ public class Demo {
         new Demo(configuration(new LedStrategy()));
         new Demo(configuration(new LuminescentStrategy()));
     }
-
 }
