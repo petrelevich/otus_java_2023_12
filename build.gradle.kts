@@ -54,6 +54,8 @@ allprojects {
     val bootstrap: String by project
     val springDocOpenapiUi: String by project
     val jsr305: String by project
+    
+    val grpc: String by project
 
     apply(plugin = "io.spring.dependency-management")
     dependencyManagement {
@@ -77,7 +79,7 @@ allprojects {
             dependency("org.neo4j.driver:neo4j-java-driver:$neo4j")
             dependency("redis.clients:jedis:$jedis")
 			
-			dependency("org.eclipse.jetty.ee10:jetty-ee10-servlet:$jetty")
+            dependency("org.eclipse.jetty.ee10:jetty-ee10-servlet:$jetty")
             dependency("org.eclipse.jetty:jetty-server:$jetty")
             dependency("org.eclipse.jetty.ee10:jetty-ee10-webapp:$jetty")
             dependency("org.eclipse.jetty:jetty-security:$jetty")
@@ -93,6 +95,10 @@ allprojects {
             dependency("org.webjars:bootstrap:$bootstrap")
             dependency("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocOpenapiUi")
             dependency("com.google.code.findbugs:jsr305:$jsr305")
+
+            dependency("io.grpc:grpc-netty:$grpc")
+            dependency("io.grpc:grpc-protobuf:$grpc")
+            dependency("io.grpc:grpc-stub:$grpc")
         }
     }
 
