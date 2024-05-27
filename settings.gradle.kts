@@ -71,6 +71,9 @@ include ("L34-rabbitMQ:allServicesModels")
 include ("L34-rabbitMQ:approvalService")
 include ("L34-rabbitMQ:mainService")
 
+include ("L35-kafka:consumer")
+include ("L35-kafka:producer")
+
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings
