@@ -12,9 +12,9 @@ public class ExecutorServiceDemo {
     private static final Logger logger = LoggerFactory.getLogger(ExecutorServiceDemo.class);
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-//         new ExecutorServiceDemo().singleThread();
-//         new ExecutorServiceDemo().newFixedThreadPool();
-         new ExecutorServiceDemo().scheduledThreadPoolExecutor();
+        // new ExecutorServiceDemo().singleThread();
+        // new ExecutorServiceDemo().newFixedThreadPool();
+        // new ExecutorServiceDemo().scheduledThreadPoolExecutor();
     }
 
     private String task(int id) {
@@ -54,7 +54,7 @@ public class ExecutorServiceDemo {
     @SuppressWarnings("java:S2095") // до переезда на java 21
     void newFixedThreadPool() throws ExecutionException, InterruptedException {
         // Заданное количество потоков выполняют задачи из внутренней НЕОГРАНИЧЕННОЙ очереди
-        var executor = Executors.newFixedThreadPool(1);
+        var executor = Executors.newFixedThreadPool(3);
         var resultInFuture1 = executor.submit(() -> task(1));
         logger.info("task1 submitted");
 
@@ -79,10 +79,6 @@ public class ExecutorServiceDemo {
     void scheduledThreadPoolExecutor() {
         // Заданное количество потоков выполняют задачи с задержкой или периодически
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-        executor.scheduleAtFixedRate(() -> logger.info("task is done"),
-                0, 3, TimeUnit.SECONDS);
-
-        executor.scheduleAtFixedRate(() -> logger.info("task is done 2"),
-                0, 2, TimeUnit.SECONDS);
+        executor.scheduleAtFixedRate(() -> logger.info("task is done"), 0, 3, TimeUnit.SECONDS);
     }
 }

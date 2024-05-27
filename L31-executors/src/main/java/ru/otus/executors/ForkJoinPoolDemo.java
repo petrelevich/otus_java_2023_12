@@ -17,7 +17,8 @@ public class ForkJoinPoolDemo {
     private void go() {
         var forkJoinPool = new ForkJoinPool();
 
-        var result = forkJoinPool.invoke(new TaskSumInt(new int[] {1, 2, 3, 4, 5, 6, 7,1, 2, 3, 4, 5, 6, 7,1, 2, 3, 4, 5, 6, 7,1, 2, 3, 4, 5, 6, 7}));
+        var result = forkJoinPool.invoke(new TaskSumInt(
+                new int[] {1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7}));
         logger.info("result:{}", result);
     }
 
