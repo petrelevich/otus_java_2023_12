@@ -75,6 +75,7 @@ include ("L35-kafka:consumer")
 include ("L35-kafka:producer")
 
 include ("L36-NIO")
+include ("L37-netty")
 
 pluginManagement {
     val jgitver: String by settings
