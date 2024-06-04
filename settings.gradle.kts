@@ -77,6 +77,13 @@ include ("L35-kafka:producer")
 include ("L36-NIO")
 include ("L37-netty")
 
+include ("L38-webflux:source")
+include ("L38-webflux:processor")
+include ("L38-webflux:client")
+include ("L38-webflux-chat:client-service")
+include ("L38-webflux-chat:datastore-service")
+
+
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings
