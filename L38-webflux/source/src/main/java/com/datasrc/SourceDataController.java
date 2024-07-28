@@ -43,7 +43,6 @@ public class SourceDataController {
     @GetMapping(value = "/data-mono/{seed}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<StringValue> dataMono(@PathVariable("seed") long seed) {
         log.info("request for string data-mono, seed:{}", seed);
-        log.info("Method request for string data done");
 
         var future = CompletableFuture.supplyAsync(() -> dataProducerStringBlocked.produce(seed), executor);
         return Mono.fromFuture(future);

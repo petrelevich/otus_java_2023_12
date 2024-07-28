@@ -2,6 +2,7 @@ package ru.otus;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,9 +55,10 @@ public class ActionDemo implements CommandLineRunner {
                 managerName,
                 "ManagerSecond",
                 Set.of(
-                        new Client("managClient1", managerName, 1, new ClientDetails("inf01")),
-                        new Client("managClient2", managerName, 2, new ClientDetails("info2"))),
-                new ArrayList<>(),
+                        new Client("managClient1", managerName, 11, new ClientDetails("inf01")),
+                        new Client("managClient2", managerName, 22, new ClientDetails("info2"))),
+                List.of(new Client("managClient1Ordered", managerName, 100, new ClientDetails("inf01")),
+                        new Client("managClient2Ordered", managerName, 200, new ClientDetails("info2"))),
                 true));
         var managerSecondSelected = dbServiceManager
                 .getManager(managerSecond.getId())
